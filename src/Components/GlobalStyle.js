@@ -28,11 +28,12 @@ const GlobalStyle = createGlobalStyle`
     }
     h2{
             font-weight:lighter;
-            font-size: 4rem;
+            font-size: 3rem;
 
     }
     h4{
         font-weight:bold;
+        font-size: 2rem;
     }
     span{
         font-weight:bold;
