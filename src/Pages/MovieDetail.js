@@ -3,6 +3,8 @@ import {useParams} from "react-router-dom";
 import {MovieState} from "../Components/MovieState";
 import styled from "styled-components";
 import {Description} from "../Components/styles";
+import {motion} from "framer-motion";
+import {pageAnimation} from "../Components/Animation";
 
 const MovieDetail = () => {
   let {movieName} = useParams();
@@ -23,7 +25,7 @@ const MovieDetail = () => {
     console.log(currentMovie);
   }, [movies, url]);
   return (
-    <Details>
+    <Details variants={pageAnimation} exit="exit" initial="hidden" animate="show">
       <Headline>
         <h2>{currentMovie.title}</h2>
         <img src={currentMovie.mainImg}></img>
@@ -40,7 +42,7 @@ const MovieDetail = () => {
   );
 };
 
-let Details = styled.div`
+let Details = styled(motion.div)`
   color: white;
 `;
 let Headline = styled.div`
