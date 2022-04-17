@@ -9,7 +9,7 @@ export const About = styled.div`
   padding: 5rem 10rem;
   color: white;
   img {
-    height: 80vh;
+    height: 75vh;
   }
 `;
 

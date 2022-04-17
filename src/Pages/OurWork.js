@@ -5,16 +5,31 @@ import goodtimes from "../img/goodtimes-small.png";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {motion} from "framer-motion";
-import {pageAnimation} from "../Components/Animation";
+import {
+  pageAnimation,
+  fadeAnimation,
+  titleAnimation,
+  photoAnimation,
+  lineAnimation,
+  sliderAnimation,
+  sliderContainerAnimation,
+} from "../Components/Animation";
 
 const OurWork = () => {
   return (
     <Work variants={pageAnimation} exit="exit" initial="hidden" animate="show" style={{background: "white"}}>
+      <motion.div>
+        <Frame1 variants={sliderAnimation}></Frame1>
+        <Frame2 variants={sliderAnimation}></Frame2>
+        <Frame3 variants={sliderAnimation}></Frame3>
+        <Frame4 variants={sliderAnimation}></Frame4>
+      </motion.div>
+
       <Movie>
-        <h2>The Athlete</h2>
-        <div className="line"></div>
+        <motion.h2 variants={fadeAnimation}>The Athlete</motion.h2>
+        <motion.div variants={lineAnimation} className="line"></motion.div>
         <Link to="/work/the-athlete">
-          <img src={athlete} alt="athelete phto" />
+          <motion.img variants={photoAnimation} src={athlete} alt="athelete phto" />
         </Link>
       </Movie>
       <Movie>
@@ -45,16 +60,36 @@ const Work = styled(motion.div)`
 `;
 const Movie = styled.div`
   padding-bottom: 10rem;
+  margin-top: -2rem;
   .line {
-    height: 0.5rem;
-    background-color: #ccc;
+    height: 0.3rem;
+    background-color: #23d997;
     margin-bottom: 3rem;
   }
   img {
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     object-fit: cover;
   }
+`;
+
+const Frame1 = styled(motion.div)`
+  position: fixed;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  height: 100vh;
+  background-color: #fffebf;
+  z-index: 2;
+`;
+const Frame2 = styled(Frame1)`
+  background-color: #ff8efb;
+`;
+const Frame3 = styled(Frame1)`
+  background-color: #8ed2ff;
+`;
+const Frame4 = styled(Frame1)`
+  background-color: #8effa0;
 `;
 
 export default OurWork;
