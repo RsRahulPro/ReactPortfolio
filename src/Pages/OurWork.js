@@ -15,7 +15,13 @@ import {
   sliderContainerAnimation,
 } from "../Components/Animation";
 
+import {useInView} from "react-intersection-observer";
+import {useAnimation} from "framer-motion";
+import {useScroll} from "../Components/useScroll";
+
 const OurWork = () => {
+  const [element1, controls1] = useScroll();
+  const [element2, controls2] = useScroll();
   return (
     <Work variants={pageAnimation} exit="exit" initial="hidden" animate="show" style={{background: "white"}}>
       <motion.div>
@@ -32,16 +38,16 @@ const OurWork = () => {
           <motion.img variants={photoAnimation} src={athlete} alt="athelete phto" />
         </Link>
       </Movie>
-      <Movie>
+      <Movie variants={fadeAnimation} animate={controls1} ref={element1} initial="hidden">
         <h2>The Racer</h2>
-        <div className="line"></div>
+        <motion.div variants={lineAnimation} animate={controls1} ref={element1} initial="hidden" className="line"></motion.div>
         <Link to="/work/the-racer">
           <img src={theracer} alt="racer phto" />
         </Link>
       </Movie>
-      <Movie>
+      <Movie variants={fadeAnimation} animate={controls2} ref={element2} initial="hidden">
         <h2>Good times</h2>
-        <div className="line"></div>
+        <motion.div variants={lineAnimation} animate={controls2} ref={element2} initial="hidden" className="line"></motion.div>
         <Link to="/work/good-times">
           <img src={goodtimes} alt="goodtimes phto" />
         </Link>
@@ -58,7 +64,7 @@ const Work = styled(motion.div)`
     padding: 1rem 0rem;
   }
 `;
-const Movie = styled.div`
+const Movie = styled(motion.div)`
   padding-bottom: 10rem;
   margin-top: -2rem;
   .line {
@@ -68,7 +74,7 @@ const Movie = styled.div`
   }
   img {
     width: 100%;
-    height: 60vh;
+    height: 65vh;
     object-fit: cover;
   }
 `;
