@@ -10,10 +10,15 @@ import clock from "../img/clock.svg";
 import diaphragm from "../img/diaphragm.svg";
 import money from "../img/money.svg";
 import teamwork from "../img/teamwork.svg";
+import {useInView} from "react-intersection-observer";
+import {useAnimation} from "framer-motion";
+import {useScroll} from "./useScroll";
+import {fadeAnimation} from "./Animation";
 
 let ServicesSection = () => {
+  const [element, controls] = useScroll();
   return (
-    <Services>
+    <Services variants={fadeAnimation} animate={controls} ref={element} initial="hidden">
       <Description>
         <h2>
           High <span>quality</span> services.

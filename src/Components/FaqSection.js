@@ -4,11 +4,16 @@ import styled from "styled-components";
 import {About, Description, Image, Hide} from "./styles";
 import Toggle from "./Toggle";
 import {AnimateSharedLayout} from "framer-motion";
+import {useInView} from "react-intersection-observer";
+import {useAnimation} from "framer-motion";
+import {useScroll} from "./useScroll";
+import {fadeAnimation} from "./Animation";
 
 let FaqSection = () => {
   let [toggleState, setToggleState] = useState([false, false, false, false]);
+  const [element, controls] = useScroll();
   return (
-    <Faq>
+    <Faq variants={fadeAnimation} animate={controls} ref={element} initial="hidden">
       <AnimateSharedLayout>
         <h2>
           Any questions
@@ -98,26 +103,29 @@ const Faq = styled(About)`
     display: block;
   }
   h2 {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     font-weight: lighter;
   }
   .faq-line {
     background: #ccc;
     height: 0.2rem;
-    margin: 2rem 0rem;
+    margin: 1rem 0rem;
     width: 100%;
   }
   .question {
-    padding: 3rem 0rem;
+    padding: 1.5rem 0rem;
     cursor: pointer;
   }
   .answer {
-    padding: 2rem 0rem;
+    padding: 1rem 0rem;
     p {
       padding: 1rem 0rem;
     }
   }
   display: block;
+  h4 {
+    font-size: 1.3rem;
+  }
 `;
 
 export default FaqSection;
