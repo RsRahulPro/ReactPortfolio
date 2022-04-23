@@ -15,6 +15,8 @@ import {
   sliderContainerAnimation,
 } from "../Components/Animation";
 
+import ScrollTop from "../Components/ScrollTop";
+
 import {useInView} from "react-intersection-observer";
 import {useAnimation} from "framer-motion";
 import {useScroll} from "../Components/useScroll";

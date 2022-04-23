@@ -5,6 +5,7 @@ import FaqSection from "../Components/FaqSection";
 import Nav from "../Components/Nav";
 import {motion, AnimatePresence} from "framer-motion";
 import {pageAnimation} from "../Components/Animation";
+import ScrollTop from "../Components/ScrollTop";
 
 let AboutUs = () => {
   return (
@@ -12,6 +13,7 @@ let AboutUs = () => {
       <AboutSection />
       <ServicesSection />
       <FaqSection />
+      <ScrollTop />
     </motion.div>
   );
 };
